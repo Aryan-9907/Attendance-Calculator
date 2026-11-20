@@ -10,13 +10,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Decorative background shapes. -->
+  <!-- Decorative fixed background shapes remain behind the main content. -->
   <div class="blob b1"></div>
   <div class="blob b2"></div>
   <div class="blob b3"></div>
 
   <main>
-    <!-- Page title and theme toggle. -->
+    <!-- Page title and manually controlled theme toggle. -->
     <header>
       <div>
         <h1>Attendance Calculator</h1>
@@ -25,7 +25,7 @@
       <button class="theme" id="theme" aria-label="Toggle theme">◐</button>
     </header>
 
-    <!-- Attendance input card. -->
+    <!-- Two compact attendance inputs; of remains as visual separator. -->
     <section class="glass input-card">
       <div class="field">
         <input id="att" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="0" maxlength="4" aria-label="Sessions attended" autocomplete="off">
@@ -38,10 +38,10 @@
       </div>
     </section>
 
-    <!-- Validation message shown when the input is invalid. -->
+    <!-- Validation message is announced live and appears only for invalid input. -->
     <div class="msg" id="msg" role="status"></div>
 
-    <!-- Live attendance result and milestone list. -->
+    <!-- Live compact percentage card and dynamically generated milestone list. -->
     <section class="result" id="result" aria-live="polite">
       <div class="glass hero">
         <div class="ring">

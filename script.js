@@ -2,10 +2,14 @@
    Reads the user's values, validates them, and updates the result card
    and every milestone row on the page. */
 (function(){
-  // Cache frequently used elements instead of querying the document repeatedly.
+  // Cache the DOM elements once to avoid repeated document lookups.
   var $=function(id){return document.getElementById(id)};
   var att=$('att'),tot=$('tot'),msg=$('msg'),res=$('result'),list=$('list'),fg=$('fg');
+
+  // Store the milestone targets and progress-ring circumference.
   var MILES=[75,80,85,90,95],CIRC=2*Math.PI*48,queued=false,quiet=true;
+
+  // Respect the user's operating-system preference for reduced motion.
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Initialize the progress ring so it starts empty.
