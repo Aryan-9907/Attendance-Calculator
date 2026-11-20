@@ -1,0 +1,28 @@
+{
+  "name": "attendance-calculator",
+  "version": "1.0.0",
+  "description": "A simple attendance calculator that helps students track their attendance percentage, calculate how many classes they need to attend to reach their targets, and find how many classes they can safely miss.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aryan-9907/Attendance-Calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Aryan-9907/Attendance-Calculator/issues"
+  },
+  "homepage": "https://github.com/Aryan-9907/Attendance-Calculator#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/core": "^8.6.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.2"
+  }
+}
