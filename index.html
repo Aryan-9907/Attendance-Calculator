@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Attendance Calculator</title>
+  <!-- Load the same web font used by the original website. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <!-- All page styling is kept in this separate stylesheet. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Decorative background shapes. -->
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <main>
+    <!-- Page title and theme toggle. -->
+    <header>
+      <div>
+        <h1>Attendance Calculator</h1>
+        <div class="sub">Know exactly where you stand.</div>
+      </div>
+      <button class="theme" id="theme" aria-label="Toggle theme">◐</button>
+    </header>
+
+    <!-- Attendance input card. -->
+    <section class="glass input-card">
+      <div class="field">
+        <input id="att" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="0" maxlength="4" aria-label="Sessions attended" autocomplete="off">
+        <label for="att">Sessions attended</label>
+      </div>
+      <div class="of">of</div>
+      <div class="field">
+        <input id="tot" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="0" maxlength="4" aria-label="Total sessions" autocomplete="off">
+        <label for="tot">Total sessions</label>
+      </div>
+    </section>
+
+    <!-- Validation message shown when the input is invalid. -->
+    <div class="msg" id="msg" role="status"></div>
+
+    <!-- Live attendance result and milestone list. -->
+    <section class="result" id="result" aria-live="polite">
+      <div class="glass hero">
+        <div class="ring">
+          <svg viewBox="0 0 108 108">
+            <circle class="tr" cx="54" cy="54" r="48"/>
+            <circle class="fg" id="fg" cx="54" cy="54" r="48"/>
+          </svg>
+          <div class="pct"><span><span id="pct">0</span><small>%</small></span></div>
+        </div>
+        <div class="verdict">
+          <div class="big"><span id="bl"></span> <b id="bn">0</b> <span id="bu"></span></div>
+          <p id="note"></p>
+        </div>
+      </div>
+
+      <h2>Your milestones</h2>
+      <div class="list" id="list"></div>
+      <p class="foot">Skip counts assume you miss classes from today onward. Attend counts assume you attend every upcoming class.</p>
+      <button class="reset" id="reset">Clear and start over</button>
+    </section>
+  </main>
+
+  <!-- All calculator behavior is kept in this separate script. -->
+  <script src="script.js"></script>
+</body>
+</html>
