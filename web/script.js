@@ -166,8 +166,25 @@
 
   // Toggle only between the explicit light and dark theme values.
   var root=document.documentElement;
-  $('theme').addEventListener('click',function(){
+  var themeButton=$('theme');
+  var themeIcon=$('themeIcon');
+
+  // Restart the icon animation each time the theme is changed.
+  function animateThemeIcon(){
+    themeIcon.classList.remove('is-spinning');
+    void themeIcon.offsetWidth;
+    themeIcon.classList.add('is-spinning');
+  }
+
+  // Clear the temporary animation class after it completes.
+  themeIcon.addEventListener('animationend',function(){
+    themeIcon.classList.remove('is-spinning');
+  });
+
+  // Toggle the document theme and play a short icon rotation.
+  themeButton.addEventListener('click',function(){
     var dark=root.getAttribute('data-theme')?root.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
     root.setAttribute('data-theme',dark?'light':'dark');
+    animateThemeIcon();
   });
 })();

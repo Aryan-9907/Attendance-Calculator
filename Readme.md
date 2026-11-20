@@ -7,3 +7,9 @@ A simple attendance calculator that helps students track their attendance percen
 - Calculate sessions needed to reach 75%, 80%, 85%, 90% and more
 - Calculate how many sessions can be missed
 - Simple and beginner-friendly interface
+
+## Project structure
+
+- `web/` - Main responsive website source (`index.html`, `style.css`, and `script.js`)
+- `android/` - Capacitor Android project
+- `.github/workflows/` - GitHub Actions APK build workflow
