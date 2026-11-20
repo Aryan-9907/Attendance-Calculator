@@ -158,12 +158,13 @@ h1 {
   font-size:clamp(1.45rem,6vw,1.75rem);
   line-height:1;
   transform-origin:center;
+  transform:rotate(-3deg);
   transition:transform .35s cubic-bezier(.2,.8,.2,1),color .25s;
   user-select:none;
 }
 
 .theme:hover .theme-icon {
-  transform:rotate(12deg) scale(1.08);
+  transform:rotate(-3deg) scale(1.08);
 }
 
 /* Applied briefly by JavaScript after a theme toggle. */
@@ -173,13 +174,13 @@ h1 {
 
 @keyframes theme-spin {
   0% {
-    transform:rotate(0deg) scale(1);
+    transform:rotate(-12deg) scale(1);
   }
   55% {
-    transform:rotate(180deg) scale(.82);
+    transform:rotate(168deg) scale(.82);
   }
   100% {
-    transform:rotate(360deg) scale(1);
+    transform:rotate(348deg) scale(1);
   }
 }
 
