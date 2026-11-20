@@ -1,109 +1,250 @@
 <div align="center">
 
+<img src="landing-page/assets/icon.png" width="140" alt="Attendance Calculator app icon">
+
 # 📊 Attendance Calculator
 
-**Know exactly how many classes you can skip, or need to attend, to hit your attendance target.**
+**A fast, clean, and responsive attendance companion for planning classes with confidence.**
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](YOUR_DEMO_LINK)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-![Made with](https://img.shields.io/badge/made%20with-HTML%20%7C%20CSS%20%7C%20JS-orange)
-
-[Live Demo](YOUR_DEMO_LINK) · [Report a Bug](../../issues) · [Request a Feature](../../issues)
-
-![Screenshot](assets/screenshot.png)
+[![Live App](https://img.shields.io/badge/Live_App-Try_Now-22d3ee?style=for-the-badge&logo=githubpages&logoColor=0f1526)](https://aryan-9907.github.io/Attendance-Calculator/web/index.html)
+[![Landing Page](https://img.shields.io/badge/Landing_Page-Visit-3b82f6?style=for-the-badge&logo=netlify&logoColor=white)](https://attendance-calculator1.netlify.app/)
+[![Android](https://img.shields.io/badge/Platform-Android-34e0a1?style=for-the-badge&logo=android&logoColor=0f1526)](https://github.com/Aryan-9907/Attendance-Calculator/releases)
+[![Built With](https://img.shields.io/badge/Built_With-HTML%20CSS%20JS-f59e0b?style=for-the-badge&logo=javascript&logoColor=white)](#-built-with)
 
 </div>
 
 ---
 
-## 🎯 Why this exists
+## 🌐 Live Links
 
-Most colleges require a minimum attendance (commonly **75%**). Working out
-"how many more classes can I miss?" by hand is tedious and easy to get wrong.
-This tool does the math instantly, so you can plan your semester instead of
-panicking before exams.
+| View | Link |
+|---|---|
+| 📱 **Main App** | [Open Attendance Calculator](https://aryan-9907.github.io/Attendance-Calculator/web/index.html) |
+| 🚀 **Landing Page** | [Visit the Product Website](https://attendance-calculator1.netlify.app/) |
+| 📦 **Android APK** | [Download from GitHub Releases](https://github.com/Aryan-9907/Attendance-Calculator/releases) |
+| 🧑‍💻 **Source Code** | [View the Repository](https://github.com/Aryan-9907/Attendance-Calculator) |
+
+---
+
+## 📸 Screenshots
+
+### 🖥️ Landing Page
+
+<div align="center">
+  <img src="assets/landing-desktop.png" width="900" alt="Attendance Calculator landing page">
+</div>
+
+### 📱 Main App
+
+<div align="center">
+  <img src="assets/app-desktop.png" width="900" alt="Attendance Calculator app interface">
+</div>
+
+> The interface adapts for phones, tablets, and desktop screens with a compact mobile-first layout.
+
+---
 
 ## ✨ Features
 
-- ✅ Calculates your **current attendance percentage**
-- 🧮 Tells you how many classes you must attend to reach your target
-- 🏖️ Tells you how many classes you can safely **skip**
-- 🔮 Predicts your final percentage based on planned absences
-- 🎚️ Adjustable target percentage (default: 75%)
-- 📱 Responsive layout, works on phone and desktop
-- ⚡ No install, no backend, no sign-up
+### 📈 Attendance Insights
 
-## 🖼️ Demo
+- Calculate the current attendance percentage instantly
+- See how many classes must be attended consecutively
+- Calculate how many classes may be missed while staying above a target
+- View clear milestone cards for **75%**, **80%**, **85%**, **90%**, and **95%**
+- Use a live animated attendance ring with safety, warning, and danger states
 
-| Input | Result |
-|-------|--------|
-| ![Input](assets/input.png) | ![Result](assets/result.png) |
+### 🌗 Theme and Personalization
 
-## 🚀 Quick Start
+- Switch between light and dark themes
+- Automatically remember the selected theme
+- Restore saved attended and total-session values after reopening
+- Enjoy smooth, responsive theme and result animations
 
-**Use it online:** [YOUR_DEMO_LINK](YOUR_DEMO_LINK)
+### 📱 Mobile-Friendly Experience
 
-**Run locally:**
+- Optimized for small and large Android screens
+- Prevents unwanted horizontal scrolling
+- Uses safe-area spacing for modern mobile devices
+- Honors reduced-motion device preferences
+- Includes touch-friendly controls and accessible keyboard interactions
 
-```bash
-git clone https://github.com/Aryan-9907/Attendance-Calculator.git
-cd Attendance-Calculator
-```
+### 🎨 Creator and Reset Experience
 
-Then open `index.html` in your browser. No build step required.
+- Tap the app title to open the creator credit card
+- Open the project directly through the GitHub button
+- Confirm destructive resets through a themed confirmation card
+- Close dialogs using the button, backdrop, or Escape key
 
-## 🧠 How it works
+---
 
-Let `A` = classes attended, `T` = total classes held, `P` = target (e.g. 0.75).
+## 🧠 How It Works
+
+Let:
+
+- `A` = classes or sessions attended
+- `T` = total classes or sessions held
+- `P` = target attendance percentage
 
 | Goal | Formula |
-|------|---------|
-| Current % | `A / T × 100` |
-| Classes to attend consecutively to reach target | `ceil((P·T − A) / (1 − P))` |
-| Classes you can still skip | `floor(A / P − T)` |
+|---|---|
+| Current attendance | `A ÷ T × 100` |
+| Consecutive classes to attend | `ceil((P × T − 100 × A) ÷ (100 − P))` |
+| Classes that may be missed at 75% | `floor((A × 100 ÷ 75) − T)` |
+| Attendance milestone calculation | `ceil((M × T − 100 × A) ÷ (100 − M))` |
 
-**Example:** attended 30 of 45 classes (66.7%) with a 75% target.
-You need `ceil((0.75×45 − 30) / 0.25) = 16` consecutive classes to get back to 75%.
+### Example
+
+If `42` sessions are attended out of `50`:
+
+- Current attendance = **84%**
+- Safe classes at **75%** = **6**
+- Classes needed for **85%** = **4**
+- Classes needed for **90%** = **30**
+
+---
 
 ## 🗂️ Project Structure
 
-```
+```text
 Attendance-Calculator/
-├── index.html      # UI
-├── style.css       # Styling
-├── script.js       # Calculation logic
-└── README.md
+├── web/                         # Main browser and Android app source
+│   ├── index.html               # App markup
+│   ├── style.css                # Themes, layout, and animations
+│   └── script.js                # Calculations and user interactions
+├── landing-page/                # Public product landing page
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── assets/icon.png
+├── android/                     # Capacitor Android project
+├── assets/                      # README screenshots
+├── index.html                   # GitHub Pages entry redirect
+├── package.json                 # Project scripts and dependencies
+├── capacitor.config.json        # Capacitor configuration
+└── .github/workflows/           # Automated Android APK workflow
 ```
+
+---
+
+## 🚀 Run Locally
+
+### Option 1: Open the app
+
+Open [web/index.html](web/index.html) directly in a browser.
+
+### Option 2: Use a local server
+
+```bash
+cd Attendance-Calculator
+npm start
+```
+
+Then visit:
+
+```text
+http://localhost:4173
+```
+
+### 🌐 Landing Page
+
+```bash
+python3 -m http.server 4178 --directory landing-page
+```
+
+Visit:
+
+```text
+http://localhost:4178
+```
+
+---
+
+## 📲 Build the Android App
+
+The repository contains a Capacitor Android project.
+
+```bash
+npm install
+npx cap sync android
+cd android
+./gradlew assembleDebug
+```
+
+The generated APK will be available under:
+
+```text
+android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+GitHub Actions can also build the APK automatically using [.github/workflows/build-apk.yml](.github/workflows/build-apk.yml).
+
+---
 
 ## 🛠️ Built With
 
-- HTML5
-- CSS3
-- JavaScript (vanilla)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![Capacitor](https://img.shields.io/badge/Capacitor-119EFF?style=for-the-badge&logo=capacitor&logoColor=white)
+
+- **Vanilla HTML, CSS, and JavaScript** — lightweight and framework-free
+- **Capacitor** — packages the web app as an Android application
+- **Android Gradle** — builds the APK
+- **GitHub Actions** — automates Android builds
+- **GitHub Pages** — hosts the live web app
+- **Netlify** — hosts the landing page
+
+---
+
+## 🎯 Future Ideas
+
+- [ ] Multiple-subject attendance tracking
+- [ ] Import attendance details from screenshots
+- [ ] Custom attendance targets
+- [ ] Detailed subject and semester summaries
+- [ ] Export attendance reports
+- [ ] Backup and restore data
+- [ ] Improved APK installation prompts
+
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome!
+Contributions, bug reports, and feature suggestions are welcome.
 
-1. Fork the repo
-2. Create a branch: `git checkout -b feature/your-feature`
-3. Commit: `git commit -m "Add your feature"`
-4. Push: `git push origin feature/your-feature`
-5. Open a Pull Request
+1. Fork the repository
+2. Create a feature branch
 
-## 🗺️ Roadmap
+   ```bash
+   git checkout -b feature/your-feature
+   ```
 
-- [ ] Multi-subject tracking
-- [ ] Save data in local storage
-- [ ] Dark mode
-- [ ] Export report as PDF
+3. Commit your changes
 
-## 📄 License
+   ```bash
+   git commit -m "Add your feature"
+   ```
 
-Distributed under the MIT License. See `LICENSE` for details.
+4. Push the branch
+
+   ```bash
+   git push origin feature/your-feature
+   ```
+
+5. Open a pull request
+
+---
 
 ## 👤 Author
 
-**Aryan**, [@Aryan-9907](https://github.com/Aryan-9907)
+<div align="center">
 
-⭐ If this helped you, consider giving the repo a star!
+**Made with ❤️ by Aryan**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Aryan--9907-181717?style=for-the-badge&logo=github)](https://github.com/Aryan-9907)
+
+⭐ If this project helps you, consider giving the repository a star!
+
+</div>
