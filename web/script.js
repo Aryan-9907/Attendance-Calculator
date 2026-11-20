@@ -38,7 +38,7 @@
     el.textContent=txt;
     if(!quiet&&!reduce&&el.animate)el.animate(
       [{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],
-      {duration:240,easing:'cubic-bezier(.2,.8,.2,1)'}
+      {duration:180,easing:'cubic-bezier(.2,.8,.2,1)',iterations:1}
     );
   }
 
@@ -46,7 +46,7 @@
   function tween(el,to,dec){
     if(el._raf)cancelAnimationFrame(el._raf);
     if(to===null){el._v=0;el.textContent='\u2013';return}
-    var from=el._v||0,t0=performance.now(),d=reduce?0:Math.min(450,200+Math.abs(to-from)*5);
+    var from=el._v||0,t0=performance.now(),d=reduce?0:Math.min(300,160+Math.abs(to-from)*3);
     function f(n){
       var k=d?Math.min(1,(n-t0)/d):1,e=1-Math.pow(1-k,3),v=from+(to-from)*e;
       el._v=v;

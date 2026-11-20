@@ -59,6 +59,8 @@ body {
   overflow-x:clip;
   position:relative;
   -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent;
+  overscroll-behavior-x:none;
 }
 
 /* Large decorative background gradients. */
@@ -124,7 +126,8 @@ h1 {
 .app-title {
   cursor:pointer;
   border-radius:8px;
-  transition:color .2s,transform .2s;
+  transition:color .16s,transform .16s;
+  -webkit-tap-highlight-color:transparent;
 }
 
 .app-title:hover {
@@ -158,7 +161,10 @@ h1 {
   display:grid;
   place-items:center;
   padding:0;
-  transition:transform .15s,background-color .25s,border-color .25s,box-shadow .25s;
+  transition:transform .12s ease-out,background-color .18s ease-out,border-color .18s ease-out;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  will-change:transform;
 }
 
 .theme:active {
@@ -175,7 +181,7 @@ h1 {
   line-height:1;
   transform-origin:center;
   transform:rotate(-3deg);
-  transition:transform .35s cubic-bezier(.2,.8,.2,1),color .25s;
+  transition:transform .18s cubic-bezier(.2,.8,.2,1),color .18s;
   user-select:none;
 }
 
@@ -185,7 +191,8 @@ h1 {
 
 /* Applied briefly by JavaScript after a theme toggle. */
 .theme-icon.is-spinning {
-  animation:theme-spin .45s cubic-bezier(.2,.8,.2,1);
+  animation:theme-spin .32s cubic-bezier(.2,.75,.25,1);
+  will-change:transform;
 }
 
 @keyframes theme-spin {
@@ -241,7 +248,8 @@ h1 {
   border-radius:20px;
   padding:14px 4px;
   outline:none;
-  transition:border-color .2s,box-shadow .2s,background .2s;
+  transition:border-color .12s,box-shadow .12s,background .12s;
+  touch-action:manipulation;
   -moz-appearance:textfield;
 }
 
@@ -330,7 +338,8 @@ h1 {
   stroke:var(--c);
   stroke-dasharray:302;
   stroke-dashoffset:302;
-  transition:stroke-dashoffset .6s cubic-bezier(.3,.9,.3,1),stroke .3s;
+  transition:stroke-dashoffset .32s cubic-bezier(.2,.8,.2,1),stroke .18s;
+  will-change:stroke-dashoffset;
 }
 
 .pct {
@@ -508,12 +517,12 @@ small:empty {
   place-items:center;
   padding:20px;
   background:rgba(12,15,31,.38);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
   opacity:0;
   visibility:hidden;
   pointer-events:none;
-  transition:opacity .22s ease,visibility .22s ease;
+  transition:opacity .16s ease,visibility .16s ease;
 }
 
 .modal-backdrop.is-open {
@@ -528,8 +537,9 @@ small:empty {
   max-width:100%;
   padding:30px 24px 24px;
   text-align:center;
-  transform:translateY(12px) scale(.96);
-  transition:transform .28s cubic-bezier(.2,.8,.2,1);
+  transform:translateY(8px) scale(.97);
+  transition:transform .18s cubic-bezier(.2,.8,.2,1);
+  will-change:transform;
 }
 
 .modal-backdrop.is-open .creator-card {
@@ -560,7 +570,9 @@ small:empty {
   font-size:1.35rem;
   line-height:1;
   cursor:pointer;
-  transition:transform .15s,background-color .2s;
+  transition:transform .1s ease-out,background-color .16s;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
 
 .modal-close:active {
@@ -587,7 +599,10 @@ small:empty {
   display:grid;
   place-items:center;
   box-shadow:var(--shadow);
-  transition:transform .18s,background-color .25s;
+  transition:transform .12s ease-out,background-color .16s;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  will-change:transform;
 }
 
 .github-button:hover {
@@ -640,6 +655,18 @@ small:empty {
     -webkit-backdrop-filter:blur(10px);
   }
 
+  /* Touch devices do not need hover transforms or extra visual cost. */
+  .app-title:hover,
+  .theme:hover .theme-icon,
+  .github-button:hover {
+    transform:none;
+  }
+
+  .app-title:active {
+    color:var(--accent);
+    transform:scale(.98);
+  }
+
   .theme {
     backdrop-filter:none;
     -webkit-backdrop-filter:none;
@@ -655,5 +682,12 @@ small:empty {
   * {
     animation:none!important;
     transition:none!important;
+  }
+
+  /* Keep state changes instant for users who request reduced motion. */
+  .creator-card,
+  .modal-backdrop,
+  .ring .fg {
+    will-change:auto;
   }
 }
