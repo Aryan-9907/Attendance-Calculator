@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ic_launcher_background">#FFFFFF</color>
+    <!-- Navy background matches the attached Attendance Calculator logo. -->
+    <color name="ic_launcher_background">#18264F</color>
 </resources>

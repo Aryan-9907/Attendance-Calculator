@@ -187,4 +187,49 @@
     root.setAttribute('data-theme',dark?'light':'dark');
     animateThemeIcon();
   });
+
+  // Creator modal behavior: open from the title and support several close methods.
+  var appTitle=$('appTitle');
+  var creatorModal=$('creatorModal');
+  var modalClose=$('modalClose');
+  var previouslyFocused=null;
+
+  // Display the modal and move keyboard focus to its close button.
+  function openCreatorModal(){
+    previouslyFocused=document.activeElement;
+    creatorModal.classList.add('is-open');
+    creatorModal.setAttribute('aria-hidden','false');
+    modalClose.focus();
+  }
+
+  // Hide the modal and restore focus to the element that opened it.
+  function closeCreatorModal(){
+    creatorModal.classList.remove('is-open');
+    creatorModal.setAttribute('aria-hidden','true');
+    if(previouslyFocused)previouslyFocused.focus();
+  }
+
+  // Mouse or touch opening from the title.
+  appTitle.addEventListener('click',openCreatorModal);
+
+  // Keyboard opening also supports Enter and Space for accessibility.
+  appTitle.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      openCreatorModal();
+    }
+  });
+
+  // Close through the dedicated button or by pressing Escape.
+  modalClose.addEventListener('click',closeCreatorModal);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&creatorModal.classList.contains('is-open')){
+      closeCreatorModal();
+    }
+  });
+
+  // Clicking outside the card dismisses the modal.
+  creatorModal.addEventListener('click',function(e){
+    if(e.target===creatorModal)closeCreatorModal();
+  });
 })();
