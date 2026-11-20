@@ -8,9 +8,25 @@
 
   // Store the milestone targets and progress-ring circumference.
   var MILES=[75,80,85,90,95],CIRC=2*Math.PI*48,queued=false,quiet=true;
+  var ATTENDED_KEY='attendance-calculator-attended';
+  var TOTAL_KEY='attendance-calculator-total';
+  var THEME_KEY='attendance-calculator-theme';
 
   // Respect the user's operating-system preference for reduced motion.
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Safely read and write local storage so private browsing cannot break the app.
+  function readStoredValue(key){
+    try{return localStorage.getItem(key)||'';}
+    catch(e){return '';}
+  }
+
+  function writeStoredValue(key,value){
+    try{
+      if(value==='')localStorage.removeItem(key);
+      else localStorage.setItem(key,value);
+    }catch(e){}
+  }
 
   // Initialize the progress ring so it starts empty.
   fg.style.strokeDasharray=CIRC;
@@ -122,6 +138,8 @@
   function calc(){
     clean(att);
     clean(tot);
+    writeStoredValue(ATTENDED_KEY,att.value);
+    writeStoredValue(TOTAL_KEY,tot.value);
     att.classList.remove('err');
     tot.classList.remove('err');
     msg.textContent='';
@@ -156,18 +174,22 @@
   $('reset').addEventListener('click',function(){
     att.value='';
     tot.value='';
+    writeStoredValue(ATTENDED_KEY,'');
+    writeStoredValue(TOTAL_KEY,'');
     calc();
     att.focus();
   });
-
-  // Initialize the empty state after creating the milestone rows.
-  empty();
-  quiet=false;
 
   // Toggle only between the explicit light and dark theme values.
   var root=document.documentElement;
   var themeButton=$('theme');
   var themeIcon=$('themeIcon');
+
+  // Restore the saved theme before the initial render to avoid an unwanted flash.
+  var savedTheme=readStoredValue(THEME_KEY);
+  if(savedTheme==='dark'||savedTheme==='light'){
+    root.setAttribute('data-theme',savedTheme);
+  }
 
   // Restart the icon animation each time the theme is changed.
   function animateThemeIcon(){
@@ -184,9 +206,19 @@
   // Toggle the document theme and play a short icon rotation.
   themeButton.addEventListener('click',function(){
     var dark=root.getAttribute('data-theme')?root.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
-    root.setAttribute('data-theme',dark?'light':'dark');
+    var nextTheme=dark?'light':'dark';
+    root.setAttribute('data-theme',nextTheme);
+    writeStoredValue(THEME_KEY,nextTheme);
     animateThemeIcon();
   });
+
+  // Restore saved attendance values before the first live calculation.
+  att.value=readStoredValue(ATTENDED_KEY);
+  tot.value=readStoredValue(TOTAL_KEY);
+
+  // Initialize the saved or empty state after creating the milestone rows.
+  calc();
+  quiet=false;
 
   // Creator modal behavior: open from the title and support several close methods.
   var appTitle=$('appTitle');
