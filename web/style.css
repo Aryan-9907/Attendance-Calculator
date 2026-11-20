@@ -4,6 +4,7 @@
 :root {
   --bg1:#eef1ff;--bg2:#e6f7f1;--blob1:#8b9cff;--blob2:#5fe0b7;--blob3:#ffc78a;
   --text:#14172b;--muted:#5b617d;--glass:rgba(255,255,255,.55);--glass-strong:rgba(255,255,255,.75);
+  --confirmation:rgba(255,255,255,.88);
   --border:rgba(255,255,255,.8);--shadow:0 20px 50px -20px rgba(40,50,120,.35);
   --good:#0f9d6e;--warn:#d9822b;--bad:#d64550;--accent:#4f5dff;--track:rgba(20,23,43,.1);
   color-scheme:light;
@@ -14,6 +15,7 @@
   :root:not([data-theme="light"]) {
     --bg1:#0c0f1f;--bg2:#0a1a1a;--blob1:#4452ff;--blob2:#0fb98a;--blob3:#b8601a;
     --text:#f2f4ff;--muted:#a1a7c4;--glass:rgba(255,255,255,.07);--glass-strong:rgba(255,255,255,.12);
+    --confirmation:rgba(255,255,255,.18);
     --border:rgba(255,255,255,.14);--shadow:0 20px 60px -20px rgba(0,0,0,.7);
     --good:#3fe0aa;--warn:#ffb25e;--bad:#ff7a85;--accent:#8c97ff;--track:rgba(255,255,255,.1);
     color-scheme:dark;
@@ -24,6 +26,7 @@
 :root[data-theme="dark"] {
   --bg1:#0c0f1f;--bg2:#0a1a1a;--blob1:#4452ff;--blob2:#0fb98a;--blob3:#b8601a;
   --text:#f2f4ff;--muted:#a1a7c4;--glass:rgba(255,255,255,.07);--glass-strong:rgba(255,255,255,.12);
+  --confirmation:rgba(255,255,255,.18);
   --border:rgba(255,255,255,.14);--shadow:0 20px 60px -20px rgba(0,0,0,.7);
   --good:#3fe0aa;--warn:#ffb25e;--bad:#ff7a85;--accent:#8c97ff;--track:rgba(255,255,255,.1);
   color-scheme:dark;
@@ -552,6 +555,8 @@ small:empty {
   max-width:100%;
   padding:30px 24px 24px;
   text-align:center;
+  /* A stronger theme-aware surface keeps reset choices prominent and readable. */
+  background:var(--confirmation);
   transform:translateY(8px) scale(.97);
   transition:transform .18s cubic-bezier(.2,.8,.2,1);
   will-change:transform;
