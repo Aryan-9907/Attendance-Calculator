@@ -54,13 +54,19 @@ https://github.com/Aryan-9907/Attendance-Calculator/releases/latest
 
 ## 📸 Screenshots
 
-<table>
+<table width="100%">
   <tr>
-    <td><img src="screenshots/screenshot1.png" width="100%" alt="Dark theme attendance view"/></td>
-    <td><img src="screenshots/screenshot2.png" width="100%" alt="Light theme attendance view"/></td>
+    <td width="50%" align="center" valign="top">
+      <img src="screenshots/screenshot1.png" width="360" height="650" style="object-fit:contain" alt="Dark theme attendance view"/>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src="screenshots/screenshot2.png" width="360" height="650" style="object-fit:contain" alt="Light theme attendance view"/>
+    </td>
   </tr>
   <tr>
-    <td><img src="screenshots/screenshot3.png" width="100%" alt="Landing page hero section"/></td>
+    <td colspan="2" align="center">
+      <img src="screenshots/screenshot3.png" width="100%" alt="Landing page hero section"/>
+    </td>
   </tr>
 </table>
 
