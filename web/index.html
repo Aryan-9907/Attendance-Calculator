@@ -88,6 +88,19 @@
     </section>
   </div>
 
+  <!-- Themed confirmation card shown before clearing saved attendance values. -->
+  <div class="modal-backdrop" id="resetModal" aria-hidden="true">
+    <section class="confirmation-card glass" role="dialog" aria-modal="true" aria-labelledby="resetTitle">
+      <button class="modal-close" id="resetModalClose" type="button" aria-label="Cancel reset">×</button>
+      <h2 class="creator-title" id="resetTitle">Clear attendance data?</h2>
+      <p class="confirmation-copy">This will erase both saved values.</p>
+      <div class="confirmation-actions">
+        <button class="confirmation-button" id="cancelReset" type="button">Cancel</button>
+        <button class="confirmation-button confirm-reset" id="confirmReset" type="button">Reset</button>
+      </div>
+    </section>
+  </div>
+
   <!-- All calculator behavior is kept in this separate script. -->
   <script src="script.js"></script>
 </body>

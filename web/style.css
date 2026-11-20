@@ -546,6 +546,21 @@ small:empty {
   transform:translateY(0) scale(1);
 }
 
+.confirmation-card {
+  position:relative;
+  width:min(340px,calc(100vw - 40px));
+  max-width:100%;
+  padding:30px 24px 24px;
+  text-align:center;
+  transform:translateY(8px) scale(.97);
+  transition:transform .18s cubic-bezier(.2,.8,.2,1);
+  will-change:transform;
+}
+
+.modal-backdrop.is-open .confirmation-card {
+  transform:translateY(0) scale(1);
+}
+
 .creator-title {
   margin:0 0 20px;
   font-size:1.12rem;
@@ -619,6 +634,50 @@ small:empty {
   fill:currentColor;
 }
 
+.confirmation-copy {
+  margin:-8px 0 18px;
+  color:var(--muted);
+  font-size:.86rem;
+  line-height:1.45;
+}
+
+.confirmation-actions {
+  display:flex;
+  gap:10px;
+}
+
+.confirmation-button {
+  flex:1;
+  min-height:44px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  color:var(--text);
+  font:inherit;
+  font-size:.86rem;
+  font-weight:700;
+  cursor:pointer;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .1s ease-out,background-color .16s;
+}
+
+.confirmation-button:active {
+  transform:scale(.96);
+}
+
+.confirmation-button:focus-visible {
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
+
+.confirm-reset {
+  color:var(--bad);
+  background:var(--glass-strong);
+}
+
 /* =====================================================
    Responsive and accessibility adjustments
    ===================================================== */
@@ -686,6 +745,7 @@ small:empty {
 
   /* Keep state changes instant for users who request reduced motion. */
   .creator-card,
+  .confirmation-card,
   .modal-backdrop,
   .ring .fg {
     will-change:auto;

@@ -171,13 +171,45 @@
   att.addEventListener('input',queue);
   tot.addEventListener('input',queue);
   att.addEventListener('keydown',function(e){if(e.key==='Enter')tot.focus()});
-  $('reset').addEventListener('click',function(){
+
+  // Clear attendance values only after the reset confirmation is accepted.
+  function performReset(){
     att.value='';
     tot.value='';
     writeStoredValue(ATTENDED_KEY,'');
     writeStoredValue(TOTAL_KEY,'');
     calc();
     att.focus();
+  }
+
+  // Reset confirmation modal behavior.
+  var resetModal=$('resetModal');
+  var resetModalClose=$('resetModalClose');
+  var cancelReset=$('cancelReset');
+  var confirmReset=$('confirmReset');
+  var resetModalOpener=null;
+
+  // Open the reset confirmation and move focus to the safer cancel action.
+  function openResetModal(){
+    resetModalOpener=document.activeElement;
+    resetModal.classList.add('is-open');
+    resetModal.setAttribute('aria-hidden','false');
+    cancelReset.focus();
+  }
+
+  // Close reset confirmation and restore focus to the reset button.
+  function closeResetModal(){
+    resetModal.classList.remove('is-open');
+    resetModal.setAttribute('aria-hidden','true');
+    if(resetModalOpener)resetModalOpener.focus();
+  }
+
+  $('reset').addEventListener('click',openResetModal);
+  resetModalClose.addEventListener('click',closeResetModal);
+  cancelReset.addEventListener('click',closeResetModal);
+  confirmReset.addEventListener('click',function(){
+    closeResetModal();
+    performReset();
   });
 
   // Toggle only between the explicit light and dark theme values.
@@ -255,7 +287,9 @@
   // Close through the dedicated button or by pressing Escape.
   modalClose.addEventListener('click',closeCreatorModal);
   document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'&&creatorModal.classList.contains('is-open')){
+    if(e.key==='Escape'&&resetModal.classList.contains('is-open')){
+      closeResetModal();
+    }else if(e.key==='Escape'&&creatorModal.classList.contains('is-open')){
       closeCreatorModal();
     }
   });
@@ -263,5 +297,8 @@
   // Clicking outside the card dismisses the modal.
   creatorModal.addEventListener('click',function(e){
     if(e.target===creatorModal)closeCreatorModal();
+  });
+  resetModal.addEventListener('click',function(e){
+    if(e.target===resetModal)closeResetModal();
   });
 })();
