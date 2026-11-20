@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>
+      Attendance Calculator – Know your percentage. Plan responsibly.
+    </title>
+    <meta
+      name="description"
+      content="Track your attendance, hit every milestone from 75% to 95%, and know exactly how many classes you can skip. Free Android app."
+    />
+    <meta name="theme-color" content="#050a14" />
+
+    <!-- App logo stored inside this landing-page folder. -->
+    <link rel="icon" href="assets/icon.png" />
+
+    <!-- External font and local stylesheet imports. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Enable JavaScript-specific reveal styles before the page is painted. -->
+    <script>
+      document.documentElement.className = "js";
+    </script>
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="grid" aria-hidden="true"></div>
+    <div id="particles" aria-hidden="true"></div>
+
+    <!-- Main navigation. -->
+    <header class="nav">
+      <div class="wrap nav-in">
+        <a href="#top" class="brand"
+          ><img src="assets/icon.png" alt="" width="36" height="36" /><span
+            >Attendance Calculator</span
+          ></a
+        >
+        <nav class="links">
+          <a href="#features">Features</a><a href="#screens">Screens</a
+          ><a href="#download">Download</a>
+        </nav>
+        <a class="btn sm" data-dl href="#download">Download</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero wrap">
+        <div class="hero-txt">
+          <div class="logo-wrap rv">
+            <img
+              src="assets/icon.png"
+              alt="Attendance Calculator logo"
+              width="96"
+              height="96"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+          <h1 class="rv" style="--d: 0.1s">
+            Never fall short of <span class="grad">75%</span> again.
+          </h1>
+          <p class="lead rv" style="--d: 0.2s">
+            Enter your sessions, see your attendance instantly, and know exactly
+            how many classes you need, or can safely skip.
+          </p>
+          <p class="kicker rv" style="--d: 0.28s">
+            Instantly see your
+            <span class="rot"
+              ><b>percentage</b><b>milestones</b><b>leave allowance</b></span
+            >
+          </p>
+          <div class="cta rv" style="--d: 0.36s">
+            <a class="btn" data-dl href="#download"
+              ><svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="currentColor"
+              >
+                <path
+                  d="M7 18c0 .6.4 1 1 1h1v3a1.5 1.5 0 0 0 3 0v-3h2v3a1.5 1.5 0 0 0 3 0v-3h1c.6 0 1-.4 1-1V8H7v10zM3.5 8A1.5 1.5 0 0 0 2 9.5v6a1.5 1.5 0 0 0 3 0v-6A1.5 1.5 0 0 0 3.5 8zm17 0A1.5 1.5 0 0 0 19 9.5v6a1.5 1.5 0 0 0 3 0v-6A1.5 1.5 0 0 0 20.5 8zM15.5 2.2l1.3-1.3a.5.5 0 0 0-.7-.7l-1.5 1.5A5.5 5.5 0 0 0 12 1.2c-.9 0-1.7.2-2.5.5L8 .2a.5.5 0 0 0-.7.7l1.3 1.3A5.5 5.5 0 0 0 6.5 7h11a5.5 5.5 0 0 0-2-4.8zM10 5H9V4h1v1zm5 0h-1V4h1v1z"
+                /></svg
+              >Download for Android</a
+            >
+            <a class="ghost" href="#features">See features</a>
+          </div>
+          <div class="meta rv" style="--d: 0.44s">
+            <span class="pill" id="ver" hidden></span
+            ><span id="size" hidden></span><span>Free · Direct APK</span>
+          </div>
+        </div>
+        <div class="stage rv" style="--d: 0.2s">
+          <div class="float">
+            <div class="tilt" id="heroTilt"><div id="heroPhone"></div></div>
+          </div>
+          <div class="halo"></div>
+        </div>
+      </section>
+
+      <div class="marq" aria-hidden="true">
+        <div>
+          <span>75% · Safe zone</span><span>80% · Comfortable</span
+          ><span>85% · Strong</span><span>90% · Excellent</span
+          ><span>95% · Perfect streak</span>
+        </div>
+      </div>
+
+      <section id="features" class="sec wrap">
+        <h2 class="rv">
+          Everything you need to <span class="grad">stay on track</span>
+        </h2>
+        <p class="sub rv">Three simple tools, one clean screen.</p>
+        <div class="cards">
+          <article class="card rv">
+            <div class="viz">
+              <svg viewBox="0 0 108 108" class="mini">
+                <circle class="tr" cx="54" cy="54" r="46" />
+                <circle class="fg" cx="54" cy="54" r="46" /></svg
+              ><b class="mp">84%</b>
+            </div>
+            <h3>Attendance percentage</h3>
+            <p>
+              Type attended and total sessions. Your live percentage appears in
+              an animated ring that changes colour with your status.
+            </p>
+          </article>
+          <article class="card rv" style="--d: 0.1s">
+            <div class="viz bars">
+              <div>
+                <s>75%</s><span class="bar"><i style="--w: 100%"></i></span>
+              </div>
+              <div>
+                <s>80%</s><span class="bar"><i style="--w: 84%"></i></span>
+              </div>
+              <div>
+                <s>85%</s><span class="bar"><i style="--w: 62%"></i></span>
+              </div>
+              <div>
+                <s>90%</s><span class="bar"><i style="--w: 38%"></i></span>
+              </div>
+            </div>
+            <h3>Target milestones</h3>
+            <p>
+              See how many classes you need to attend to reach 75, 80, 85, 90
+              and 95%, all at once.
+            </p>
+          </article>
+          <article class="card rv" style="--d: 0.2s">
+            <div class="viz leave-plan">
+              <div class="dots"></div>
+              <div class="skipn">
+                <b class="big">6</b><span>classes you may miss</span>
+              </div>
+            </div>
+            <h3>Attendance leave planner</h3>
+            <p>
+              Above the cutoff? Find out how many classes you can skip for a
+              holiday and still stay at every milestone.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="screens" class="sec wrap">
+        <h2 class="rv">
+          Clean, fast and <span class="grad">built for phones</span>
+        </h2>
+        <p class="sub rv">
+          Numbers count up smoothly. Cards stay put. Nothing gets in your way.
+        </p>
+        <div class="shots">
+          <figure class="rv">
+            <div class="shot" data-s="0"></div>
+            <figcaption>Falling short? See what to attend.</figcaption>
+          </figure>
+          <figure class="rv" style="--d: 0.1s">
+            <div class="shot" data-s="1"></div>
+            <figcaption>Safe? See how many you can skip.</figcaption>
+          </figure>
+          <figure class="rv" style="--d: 0.2s">
+            <div class="shot" data-s="2"></div>
+            <figcaption>Aiming high? Track every milestone.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="download" class="sec wrap">
+        <div class="final rv">
+          <img
+            src="assets/icon.png"
+            alt=""
+            width="72"
+            height="72"
+            class="fl"
+            loading="lazy"
+            decoding="async"
+          />
+          <h2>Get the app. Plan smarter.</h2>
+          <p class="sub">
+            Downloads the Attendance Calculator v1.0.0 APK directly with one
+            click.
+          </p>
+          <a class="btn lg" data-dl href="#download">Download for Android</a>
+          <p class="tip">
+            After downloading, open the APK and allow “Install unknown apps” for
+            your browser if Android asks.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap foot-in">
+        <a href="#top" class="brand"
+          ><img src="assets/icon.png" alt="" width="30" height="30" /><span
+            >Attendance Calculator</span
+          ></a
+        >
+        <nav class="links">
+          <a href="#features">Features</a><a href="#screens">Screens</a
+          ><a href="#download">Download</a
+          ><a data-gh href="#" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+        <small
+          >© <span id="yr">2026</span> Attendance Calculator. All rights
+          reserved.</small
+        >
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
